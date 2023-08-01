@@ -6,7 +6,7 @@ const Home = () => {
   const textArray = text.split("");
 
   return (
-    <div className="bg-faedcd h-screen flex flex-col justify-center items-center">
+    <div className="bg-faedcd h-screen flex flex-col justify-start mt-24 items-center">
       <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-3xl font-black mb-14 text-e9edc9">
         <AnimatePresence>
           {textArray.map((char, index) => (
