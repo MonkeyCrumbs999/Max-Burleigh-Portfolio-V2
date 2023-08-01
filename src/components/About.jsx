@@ -1,40 +1,36 @@
-import React, { useRef, useMemo, useCallback } from "react";
+import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { throttle } from "lodash"; // Lodash library for throttling
-import Pic from "../assets/smallerpic.webp";
+import Pic from "../assets/pic.jpg";
 import withPageTransitions from "./withPageTransitions";
 
 const About = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springConfig = useMemo(() => ({ damping: 30, stiffness: 150 }), []);
+  const springConfig = { damping: 30, stiffness: 150 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
   const ref = useRef();
 
-  const handleGesture = useCallback(
-    throttle((event) => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        const clientX =
-          event.type === "touchmove" ? event.touches[0].clientX : event.clientX;
-        const clientY =
-          event.type === "touchmove" ? event.touches[0].clientY : event.clientY;
-        const xPos = (clientX - (rect.left + rect.width / 2)) / rect.width;
-        const yPos = (clientY - (rect.top + rect.height / 2)) / rect.height;
+  const handleGesture = (event) => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const clientX =
+        event.type === "touchmove" ? event.touches[0].clientX : event.clientX;
+      const clientY =
+        event.type === "touchmove" ? event.touches[0].clientY : event.clientY;
+      const xPos = (clientX - (rect.left + rect.width / 2)) / rect.width;
+      const yPos = (clientY - (rect.top + rect.height / 2)) / rect.height;
 
-        x.set(xPos * 50);
-        y.set(yPos * 50);
-      }
-    }, 16),
-    []
-  );
+      x.set(xPos * 50);
+      y.set(yPos * 50);
+    }
+  };
 
-  const handleGestureEnd = useCallback(() => {
+  const handleGestureEnd = () => {
     x.set(0);
     y.set(0);
-  }, []);
+  };
 
   return (
     <div className="flex flex-col mt-12 justify-center items-center gap-8 lg:px-4 px-2">
@@ -55,13 +51,10 @@ const About = () => {
           onTouchMove={handleGesture}
           onMouseLeave={handleGestureEnd}
           onTouchEnd={handleGestureEnd}
-          loading="lazy"
           src={Pic}
           alt="About me"
           className="object-contain rounded-full drop-shadow-lg shadow-md border-8 border-double border-pink-200 w-full"
-          style={{
-            transform: `translate3d(${springX}px, ${springY}px, 0)`, // 3D translation
-          }}
+          style={{ translateX: springX, translateY: springY }}
         />
       </div>
     </div>
