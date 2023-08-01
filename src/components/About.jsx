@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { throttle } from "lodash"; // Lodash library for throttling
-import Pic from "../assets/pic.webp";
+// import Pic from "../assets/pic.webp";
 import withPageTransitions from "./withPageTransitions";
 
 const About = () => {
@@ -48,7 +48,7 @@ const About = () => {
         nature and if there is a better way to do things: I do them. Besides web
         development, I love hip hop music and raising my two children!
       </p>
-      <div className="lg:w-3/12 w-full px-2">
+      {/* <div className="lg:w-3/12 w-full px-2">
         <motion.img
           ref={ref}
           onMouseMove={handleGesture}
@@ -62,7 +62,7 @@ const About = () => {
             transform: `translate3d(${springX}px, ${springY}px, 0)`, // 3D translation
           }}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
