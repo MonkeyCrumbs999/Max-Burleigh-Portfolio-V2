@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { throttle } from "lodash"; // Lodash library for throttling
-import Pic from "../assets/pic.webp";
+import Pic from "../assets/smallerpic.webp";
 import withPageTransitions from "./withPageTransitions";
 
 const About = () => {
