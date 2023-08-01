@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Pic from "../assets/pic.jpg";
 import withPageTransitions from "./withPageTransitions";
@@ -12,7 +12,11 @@ const About = () => {
 
   const ref = useRef();
 
+  const isMobile = () => window.innerWidth <= 768;
+
   const handleGesture = (event) => {
+    if (isMobile()) return;
+
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
       const clientX =
@@ -28,9 +32,17 @@ const About = () => {
   };
 
   const handleGestureEnd = () => {
+    if (isMobile()) return;
     x.set(0);
     y.set(0);
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleGestureEnd);
+    return () => {
+      window.removeEventListener("resize", handleGestureEnd);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col mt-12 justify-center items-center gap-8 lg:px-4 px-2">
