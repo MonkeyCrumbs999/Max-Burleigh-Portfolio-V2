@@ -33,9 +33,9 @@ const About = () => {
   };
 
   return (
-    <div className="flex flex-col mt-12 justify-center items-center gap-8">
-      <h1>More About Me</h1>
-      <p className="lg:w-1/3 w-5/6">
+    <div className="flex flex-col mt-12 justify-center items-center gap-8 lg:px-4 px-2">
+      <h1 className="text-2xl lg:text-4xl">More About Me</h1>
+      <p className="lg:w-1/3 w-full text-lg lg:text-xl px-2">
         Hello! My name is Max Burleigh, I'm 29 years old. Since I was a child
         I've been OBSESSED with technology. I love being at the forefront of the
         latest and greatest. I have been spent all of my working career within
@@ -44,7 +44,7 @@ const About = () => {
         nature and if there is a better way to do things: I do them. Besides web
         development, I love hip hop music and raising my two children!
       </p>
-      <div className="lg:w-3/12 w-10/12">
+      <div className="lg:w-3/12 w-full px-2">
         <motion.img
           ref={ref}
           onMouseMove={handleGesture}
@@ -53,7 +53,7 @@ const About = () => {
           onTouchEnd={handleGestureEnd}
           src={Pic}
           alt="About me"
-          className="object-contain rounded-full drop-shadow-lg shadow-md border-8 border-double border-pink-200"
+          className="object-contain rounded-full drop-shadow-lg shadow-md border-8 border-double border-pink-200 w-full"
           style={{ translateX: springX, translateY: springY }}
         />
       </div>
