@@ -4,9 +4,11 @@ import NavigationItem from "./NavigationItem";
 import GitHubIcon from "./GitHubIcon";
 import LinkedInIcon from "./LinkedInIcon";
 import useWindowDimensions from "./useWindowDimensions";
+import { useLocation } from "react-router-dom"; // Import useLocation
 
 const Header = () => {
   const { width } = useWindowDimensions();
+  const { pathname } = useLocation(); // Get current path
 
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = width <= 768;
@@ -63,9 +65,11 @@ const Header = () => {
                 whileTap={{ scale: 0.9 }}>
                 <LinkedInIcon className="w-6 h-6 text-ceruleanCrayola" />
               </motion.a>
-              <span className="pl-2 self-center text-2xl pb-2 lg:pb-0 text-ceruleanCrayola">
-                max burleigh
-              </span>
+              {pathname !== "/" && ( // Conditional rendering of logo
+                <span className="self-center text-2xl pb-2 text-ceruleanCrayola">
+                  max burleigh
+                </span>
+              )}
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-3 ">

@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Pic from "../assets/pic-small.webp";
 import withPageTransitions from "./withPageTransitions";
@@ -42,6 +42,19 @@ const About = () => {
       y.set(0);
     }
   }, [x, y]);
+
+  const [src, setSrc] = useState(null);
+  const [showSpinner, setShowSpinner] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSrc(Pic);
+      setShowSpinner(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="flex flex-col mt-12 justify-center items-center gap-8 lg:px-4 px-2">
       <h1 className="text-2xl lg:text-4xl">More About Me</h1>
@@ -55,18 +68,23 @@ const About = () => {
         development, I love hip hop music and raising my two children!
       </p>
       <div className="lg:w-3/12 w-full px-2">
-        <motion.img
-          ref={ref}
-          onMouseMove={handleGesture}
-          onTouchMove={handleGesture}
-          onMouseLeave={handleGestureEnd}
-          onTouchEnd={handleGestureEnd}
-          src={Pic}
-          alt="About me"
-          className="object-contain rounded-full drop-shadow-lg shadow-md border-8 border-double border-pink-200 w-full"
-          style={{ translateX: springX, translateY: springY }}
-          loading="lazy" // This line enables lazy loading for the image
-        />
+        {showSpinner ? (
+          <div className="flex justify-center items-center h-40">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          </div>
+        ) : (
+          <motion.img
+            ref={ref}
+            onMouseMove={handleGesture}
+            onTouchMove={handleGesture}
+            onMouseLeave={handleGestureEnd}
+            onTouchEnd={handleGestureEnd}
+            src={src}
+            alt="About me"
+            className="object-contain rounded-full drop-shadow-lg shadow-md border-8 border-double border-pink-200 w-full"
+            style={{ translateX: springX, translateY: springY }}
+          />
+        )}
       </div>
     </div>
   );
