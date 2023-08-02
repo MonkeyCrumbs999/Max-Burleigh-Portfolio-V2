@@ -23,7 +23,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-faedcd h-screen flex flex-col justify-start mt-24 items-center">
+    <div className="bg-faedcd h-screen flex flex-col justify-start lg:mt-24 md:mt-16 sm:mt-10 mt-6 items-center">
       <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-3xl font-black mb-14 text-e9edc9">
         <AnimatePresence>
           {textArray.map((char, index) => (
@@ -38,14 +38,16 @@ const Home = () => {
           ))}
         </AnimatePresence>
       </h1>
-      <p className="lg:w-1/2 w-80 text-center mb-8 text-fefae0">
+      <p className="lg:w-1/2 md:w-2/3 sm:w-3/4 w-full text-center mb-8 text-fefae0 px-4 sm:px-2">
         This is my home page. This website is under construction. Be done soon.
       </p>
       <div className="flex flex-col mb-14 text-center text-fefae0">
         <p className="mb-2">Here are the technologies I'm good at:</p>
-        <div className="flex justify-center space-x-4 mt-4">
+        <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
           {techs.map((tech, index) => (
-            <div className="flex flex-col items-center space-y-2" key={index}>
+            <div
+              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/3 sm:w-1/3 w-1/3 px-2"
+              key={index}>
               <FontAwesomeIcon icon={tech.icon} size="3x" />
               <p>{tech.label}</p>
             </div>
