@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavigationItem = ({
   href,
@@ -11,9 +11,6 @@ const NavigationItem = ({
   isOpen,
   toggle,
 }) => {
-  // add isOpen as a prop
-  const navigate = useNavigate();
-
   const variants = isMobile
     ? {
         open: {
@@ -35,9 +32,6 @@ const NavigationItem = ({
   const transition = isMobile ? { delay: delay, duration: 0.5 } : {};
 
   const handleNavigation = (e) => {
-    e.preventDefault();
-    console.log("Navigating to", href);
-    navigate(href);
     if (isMobile) {
       console.log("Closing menu because navigation was triggered on mobile");
       toggle(); // Call the toggle function if it's a mobile device
@@ -45,9 +39,7 @@ const NavigationItem = ({
   };
 
   return (
-    <motion.a
-      onClick={handleNavigation}
-      href={href}
+    <motion.div // Wrap Link with motion.div to apply motion effects
       className={`py-2 px-2 font-medium text-gray-500 rounded hover:bg-ceruleanCrayola hover:text-white ${className}`}
       variants={variants}
       initial={false} // Changed initial to false
@@ -61,8 +53,10 @@ const NavigationItem = ({
       whileTap={{
         scale: 0.9,
       }}>
-      {children}
-    </motion.a>
+      <Link to={href} onClick={handleNavigation}>
+        {children}
+      </Link>
+    </motion.div>
   );
 };
 
