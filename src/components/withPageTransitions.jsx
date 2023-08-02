@@ -1,17 +1,22 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
 
 const withPageTransitions = (WrappedComponent) => {
   return (props) => {
+    const [slideIn, setSlideIn] = useState(false);
+
+    useEffect(() => {
+      setSlideIn(true);
+    }, []);
+
+    const slideClass = slideIn
+      ? "translate-y-0 opacity-100"
+      : "-translate-y-full opacity-0";
+
     return (
-      <motion.div
-        initial={{ opacity: 0, y: -100 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 100 }}
-        transition={{ duration: 0.3, damping: 8 }}>
-        {" "}
+      <div
+        className={`transition-all duration-500 ease-in-out transform ${slideClass}`}>
         <WrappedComponent {...props} />
-      </motion.div>
+      </div>
     );
   };
 };

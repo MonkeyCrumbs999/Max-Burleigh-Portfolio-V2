@@ -1,9 +1,10 @@
-import React, { useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Pic from "../assets/pic.webp";
 import withPageTransitions from "./withPageTransitions";
 
 const About = () => {
+  const [loading, setLoading] = useState(true); // Loading state for the image
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springConfig = { damping: 30, stiffness: 150 };
@@ -35,6 +36,11 @@ const About = () => {
     y.set(0);
   }, [x, y]);
 
+  // Function to handle the image load event
+  const handleImageLoad = () => {
+    setLoading(false); // Set loading state to false when the image is loaded
+  };
+
   return (
     <div className="flex flex-col mt-12 justify-center items-center gap-8 lg:px-4 px-2">
       <h1 className="text-2xl lg:text-4xl">More About Me</h1>
@@ -47,7 +53,10 @@ const About = () => {
         nature and if there is a better way to do things: I do them. Besides web
         development, I love hip hop music and raising my two children!
       </p>
-      <div className="lg:w-3/12 w-full px-2">
+      <div className="lg:w-3/12 w-full px-2 relative">
+        {loading && (
+          <div className="animate-pulse bg-pink-200 object-contain rounded-full w-full h-full absolute top-0 left-0"></div>
+        )}
         <motion.img
           ref={ref}
           onMouseMove={handleGesture}
@@ -58,6 +67,7 @@ const About = () => {
           alt="About me"
           className="object-contain rounded-full drop-shadow-lg shadow-md border-8 border-double border-pink-200 w-full"
           style={{ translateX: springX, translateY: springY }}
+          onLoad={handleImageLoad} // Handle image load
         />
       </div>
     </div>
