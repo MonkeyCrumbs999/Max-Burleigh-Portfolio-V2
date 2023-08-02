@@ -42,7 +42,7 @@ const Home = () => {
         This is my home page. This website is under construction. Be done soon.
       </p>
       <div className="flex flex-col mb-14 text-center text-fefae0">
-        <p className="mb-2">Here are the technologies I'm good at:</p>
+        <p className="mb-2">Here is my tech stack:</p>
         <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
           {techs.map((tech, index) => (
             <div
