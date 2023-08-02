@@ -14,27 +14,34 @@ const About = () => {
 
   const handleGesture = useCallback(
     (event) => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        const clientX =
-          event.type === "touchmove" ? event.touches[0].clientX : event.clientX;
-        const clientY =
-          event.type === "touchmove" ? event.touches[0].clientY : event.clientY;
-        const xPos = (clientX - (rect.left + rect.width / 2)) / rect.width;
-        const yPos = (clientY - (rect.top + rect.height / 2)) / rect.height;
+      if (window.innerWidth > 768) {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const clientX =
+            event.type === "touchmove"
+              ? event.touches[0].clientX
+              : event.clientX;
+          const clientY =
+            event.type === "touchmove"
+              ? event.touches[0].clientY
+              : event.clientY;
+          const xPos = (clientX - (rect.left + rect.width / 2)) / rect.width;
+          const yPos = (clientY - (rect.top + rect.height / 2)) / rect.height;
 
-        x.set(xPos * 50);
-        y.set(yPos * 50);
+          x.set(xPos * 50);
+          y.set(yPos * 50);
+        }
       }
     },
     [x, y]
   );
 
   const handleGestureEnd = useCallback(() => {
-    x.set(0);
-    y.set(0);
+    if (window.innerWidth > 768) {
+      x.set(0);
+      y.set(0);
+    }
   }, [x, y]);
-
   return (
     <div className="flex flex-col mt-12 justify-center items-center gap-8 lg:px-4 px-2">
       <h1 className="text-2xl lg:text-4xl">More About Me</h1>

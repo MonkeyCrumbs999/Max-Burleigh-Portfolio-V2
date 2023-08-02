@@ -1,30 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
 import withPageTransitions from "./withPageTransitions";
 
-// Initialize EmailJS with your User ID
 emailjs.init("QXH-ZNI5yK9ppXX6W");
 
 const Contact = () => {
+  const [emailStatus, setEmailStatus] = useState(null);
+
   const sendEmail = (e) => {
     e.preventDefault();
 
+    setEmailStatus("sending");
+
     emailjs
       .sendForm(
-        "service_9mqp2ej",
+        "service_c3ykmr4",
         "template_d2s1obw",
         e.target,
         "QXH-ZNI5yK9ppXX6W"
       )
       .then(
         (result) => {
-          console.log(result.text);
-          alert("Email successfully sent!");
+          setEmailStatus("success");
         },
         (error) => {
-          console.log(error.text);
-          alert("Failed to send email. Please try again.");
+          setEmailStatus("failed");
         }
       );
     e.target.reset();
@@ -36,6 +37,16 @@ const Contact = () => {
         <h1 className="text-2xl font-semibold text-gray-900 mb-6 text-center sm:text-3xl">
           Contact
         </h1>
+        {emailStatus === "success" && (
+          <div className="text-center text-green-500 mb-4">
+            Email successfully sent!
+          </div>
+        )}
+        {emailStatus === "failed" && (
+          <div className="text-center text-red-500 mb-4">
+            Failed to send email. Please try again.
+          </div>
+        )}
         <form
           className="bg-pink-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col space-y-4"
           onSubmit={sendEmail}>
