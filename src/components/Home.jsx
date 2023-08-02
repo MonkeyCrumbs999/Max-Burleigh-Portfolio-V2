@@ -32,7 +32,7 @@ const Home = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
-              transition={{ delay: 0.4 + index * 0.2 }}>
+              transition={{ delay: 0.6 + index * 0.1 }}>
               {char}
             </motion.span>
           ))}
