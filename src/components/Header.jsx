@@ -3,26 +3,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import NavigationItem from "./NavigationItem";
 import GitHubIcon from "./GitHubIcon";
 import LinkedInIcon from "./LinkedInIcon";
+import useWindowDimensions from "./useWindowDimensions";
 
 const Header = () => {
+  const { width } = useWindowDimensions();
+
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) setIsOpen(false);
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const isMobile = width <= 768;
 
   const toggle = () => {
-    setIsOpen(!isOpen);
-    console.log("Toggling menu");
+    if (isMobile) setIsOpen((prevState) => !prevState);
   };
 
   const navItems = [

@@ -14,7 +14,7 @@ const withPageTransitions = (WrappedComponent) => {
 
     return (
       <div
-        className={`transition-all duration-500 ease-in-out transform ${slideClass}`}>
+        className={`transition-all duration-1000 ease-in-out transform ${slideClass}`}>
         <WrappedComponent {...props} />
       </div>
     );
