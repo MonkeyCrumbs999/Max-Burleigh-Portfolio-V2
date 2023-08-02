@@ -4,11 +4,11 @@ import NavigationItem from "./NavigationItem";
 import GitHubIcon from "./GitHubIcon";
 import LinkedInIcon from "./LinkedInIcon";
 import useWindowDimensions from "./useWindowDimensions";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const { width } = useWindowDimensions();
-  const { pathname } = useLocation(); // Get current path
+  const { pathname } = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = width <= 768;
@@ -40,39 +40,40 @@ const Header = () => {
   return (
     <nav className="bg-nonPhotoBlue shadow-lg font-sans">
       <div className="max-w-6xl mx-auto px-4 py-3">
-        <div className="flex justify-between">
-          <div className="flex space-x-7">
-            <div className="flex space-x-4 pt-2 lg:pt-0">
-              <motion.a
-                href="https://github.com/MonkeyCrumbs999"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{
-                  scale: 1.1,
-                  transition: { type: "spring", stiffness: 400, damping: 10 },
-                }}
-                whileTap={{ scale: 0.9 }}>
-                <GitHubIcon className="w-6 h-6 text-ceruleanCrayola" />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com/in/max-burleigh"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{
-                  scale: 1.1,
-                  transition: { type: "spring", stiffness: 400, damping: 10 },
-                }}
-                whileTap={{ scale: 0.9 }}>
-                <LinkedInIcon className="w-6 h-6 text-ceruleanCrayola" />
-              </motion.a>
-              {pathname !== "/" && ( // Conditional rendering of logo
-                <span className="self-center text-2xl pb-2 text-ceruleanCrayola">
-                  max burleigh
-                </span>
-              )}
-            </div>
+        <div
+          className={`flex ${
+            pathname === "/" && isMobile ? "justify-between" : "justify-evenly"
+          } lg:justify-between`}>
+          <div className="flex items-center space-x-4 lg:pt-0">
+            <motion.a
+              href="https://github.com/MonkeyCrumbs999"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                scale: 1.1,
+                transition: { type: "spring", stiffness: 400, damping: 10 },
+              }}
+              whileTap={{ scale: 0.9 }}>
+              <GitHubIcon className="w-6 h-6 text-ceruleanCrayola" />
+            </motion.a>
+            <motion.a
+              href="https://linkedin.com/in/max-burleigh"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                scale: 1.1,
+                transition: { type: "spring", stiffness: 400, damping: 10 },
+              }}
+              whileTap={{ scale: 0.9 }}>
+              <LinkedInIcon className="w-6 h-6 text-ceruleanCrayola" />
+            </motion.a>
+            {pathname !== "/" && (
+              <span className="text-2xl text-ceruleanCrayola mr-[1.5rem] lg:mr-0">
+                max burleigh
+              </span>
+            )}
           </div>
-          <div className="hidden md:flex items-center space-x-3 ">
+          <div className="hidden md:flex items-center space-x-3">
             {navItems.map((item) => (
               <NavigationItem key={item.name} href={item.path}>
                 {item.name}
@@ -81,7 +82,14 @@ const Header = () => {
           </div>
           <div
             className="md:hidden flex items-center p-2 transition duration-300"
-            onClick={toggle}>
+            onClick={toggle}
+            tabIndex={0} // Add tabIndex attribute
+            role="button" // Add role attribute
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                toggle();
+              }
+            }}>
             <button className="outline-none mobile-menu-button">
               <svg
                 className="w-4 h-4 text-ceruleanCrayola"

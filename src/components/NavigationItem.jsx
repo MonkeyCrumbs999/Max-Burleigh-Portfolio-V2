@@ -16,13 +16,11 @@ const NavigationItem = ({
         open: {
           opacity: 1,
           y: 0,
-          pointerEvents: "auto",
           transition: { delay: delay, duration: 0.5 },
         },
         closed: {
           opacity: 0,
           y: -10,
-          pointerEvents: "none",
           transition: { duration: 0.2 },
         },
         exit: { opacity: 0, transition: { duration: 0.2 } },
@@ -39,7 +37,7 @@ const NavigationItem = ({
   };
 
   return (
-    <motion.div // Wrap Link with motion.div to apply motion effects
+    <motion.div
       className={`py-2 px-2 font-medium text-gray-500 rounded hover:bg-ceruleanCrayola hover:text-white ${className}`}
       variants={variants}
       initial={false} // Changed initial to false
@@ -52,8 +50,11 @@ const NavigationItem = ({
       }}
       whileTap={{
         scale: 0.9,
-      }}>
-      <Link to={href} onClick={handleNavigation}>
+      }}
+      onClick={handleNavigation}>
+      <Link
+        to={href}
+        style={{ display: "block", width: "100%", height: "100%" }}>
         {children}
       </Link>
     </motion.div>
