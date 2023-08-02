@@ -63,7 +63,7 @@ const Header = () => {
                 whileTap={{ scale: 0.9 }}>
                 <LinkedInIcon className="w-6 h-6 text-ceruleanCrayola" />
               </motion.a>
-              <span className="pl-4 self-center text-2xl pb-2 lg:pb-0 text-ceruleanCrayola">
+              <span className="pl-2 self-center text-2xl pb-2 lg:pb-0 text-ceruleanCrayola">
                 max burleigh
               </span>
             </div>
