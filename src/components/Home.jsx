@@ -8,6 +8,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom"; // Import Link from React Router
+
 import withPageTransitions from "./withPageTransitions";
 
 const Home = () => {
@@ -54,9 +56,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <motion.a
-        href="/portfolio"
-        className="py-2 px-4 bg-nonPhotoBlue text-#213547 font-semibold rounded-lg shadow-md hover:bg-ceruleanCrayola hover:text-white"
+
+      <motion.div
         whileHover={{
           scale: 1.1,
           transition: { type: "spring", stiffness: 400, damping: 10 },
@@ -64,8 +65,19 @@ const Home = () => {
         whileTap={{
           scale: 0.9,
         }}>
-        See my work
-      </motion.a>
+        <Link
+          to="/portfolio"
+          className="py-2 px-4 bg-nonPhotoBlue text-#213547 font-semibold rounded-lg shadow-md hover:bg-ceruleanCrayola hover:text-white"
+          whileHover={{
+            scale: 1.1,
+            transition: { type: "spring", stiffness: 400, damping: 10 },
+          }}
+          whileTap={{
+            scale: 0.9,
+          }}>
+          See my work
+        </Link>
+      </motion.div>
     </div>
   );
 };

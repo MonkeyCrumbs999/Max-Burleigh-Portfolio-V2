@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import NavigationItem from "./NavigationItem";
+import { useLocation } from "react-router-dom";
 import GitHubIcon from "./GitHubIcon";
 import LinkedInIcon from "./LinkedInIcon";
 import useWindowDimensions from "./useWindowDimensions";
-import { useLocation } from "react-router-dom";
+import NavigationItem from "./NavigationItem";
 
 const Header = () => {
   const { width } = useWindowDimensions();
   const { pathname } = useLocation();
-
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = width <= 768;
-
-  const toggle = () => {
-    if (isMobile) setIsOpen((prevState) => !prevState);
-  };
-
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Portfolio", path: "/portfolio" },
@@ -24,18 +18,24 @@ const Header = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const variants = {
-    open: {
-      opacity: 1,
-      height: "auto",
-      transition: { duration: 0.5, type: "tween" },
-    },
-    closed: {
-      opacity: 0,
-      height: 0,
-      transition: { duration: 0.5, type: "tween" },
-    },
+  const toggle = () => {
+    if (isMobile) setIsOpen((prevState) => !prevState);
   };
+
+  const menuIcon = (
+    <svg
+      className="w-4 h-4 text-ceruleanCrayola"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+  );
 
   return (
     <nav className="bg-nonPhotoBlue shadow-lg font-sans">
@@ -49,10 +49,7 @@ const Header = () => {
               href="https://github.com/MonkeyCrumbs999"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{
-                scale: 1.1,
-                transition: { type: "spring", stiffness: 400, damping: 10 },
-              }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}>
               <GitHubIcon className="w-6 h-6 text-ceruleanCrayola" />
             </motion.a>
@@ -60,17 +57,18 @@ const Header = () => {
               href="https://linkedin.com/in/max-burleigh"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{
-                scale: 1.1,
-                transition: { type: "spring", stiffness: 400, damping: 10 },
-              }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}>
               <LinkedInIcon className="w-6 h-6 text-ceruleanCrayola" />
             </motion.a>
             {pathname !== "/" && (
-              <span className="text-2xl text-ceruleanCrayola mr-[1.5rem] lg:mr-0">
+              <motion.span
+                className="text-2xl text-ceruleanCrayola mr-[1.5rem] lg:mr-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}>
                 max burleigh
-              </span>
+              </motion.span>
             )}
           </div>
           <div className="hidden md:flex items-center space-x-3">
@@ -83,36 +81,35 @@ const Header = () => {
           <div
             className="md:hidden flex items-center p-2 transition duration-300"
             onClick={toggle}
-            tabIndex={0} // Add tabIndex attribute
-            role="button" // Add role attribute
+            tabIndex={0}
+            role="button"
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 toggle();
               }
             }}>
             <button className="outline-none mobile-menu-button">
-              <svg
-                className="w-4 h-4 text-ceruleanCrayola"
-                x-show="!showMenu"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"></path>
-              </svg>
+              {menuIcon}
             </button>
           </div>
         </div>
         <AnimatePresence>
           <motion.div
             className="md:hidden"
-            variants={variants}
             initial="closed"
             animate={isOpen ? "open" : "closed"}
+            variants={{
+              open: {
+                opacity: 1,
+                height: "auto",
+                transition: { duration: 0.5, type: "tween" },
+              },
+              closed: {
+                opacity: 0,
+                height: 0,
+                transition: { duration: 0.5, type: "tween" },
+              },
+            }}
             debugRender={true}>
             {navItems.map((item, index) => (
               <NavigationItem
