@@ -48,7 +48,7 @@ const Home = () => {
         <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
           {techs.map((tech, index) => (
             <div
-              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/3 sm:w-1/3 w-1/3 px-2"
+              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/3 sm:w-1/3 w-1/3 px-1 lg:px-2"
               key={index}>
               <FontAwesomeIcon icon={tech.icon} size="3x" />
               <p>{tech.label}</p>
