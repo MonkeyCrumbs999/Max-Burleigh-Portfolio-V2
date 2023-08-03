@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <div className="bg-faedcd h-screen flex flex-col justify-start lg:mt-24 md:mt-16 sm:mt-10 mt-6 items-center">
-      <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-3xl font-black mt-6 mb-6 text-e9edc9">
+      <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-4xl font-black mt-6 mb-6 text-e9edc9">
         <AnimatePresence>
           {textArray.map((char, index) => (
             <motion.span
