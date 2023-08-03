@@ -58,7 +58,7 @@ const About = () => {
           onTouchEnd={handleGestureEnd}
           src={src}
           alt="About me"
-          className="object-contain rounded-full w-full opacity-100 transition-opacity duration-500 ease-in-out border-4 border-double border-pink-300"
+          className="object-contain rounded-full w-full opacity-100 transition-opacity duration-700 ease-in-out border-4 border-double border-pink-300"
           style={{ translateX: springX, translateY: springY }}
         />
       </div>
