@@ -49,7 +49,7 @@ const About = () => {
         nature and if there is a better way to do things: I do them. Besides web
         development, I love hip hop music and raising my two children!
       </p>
-      <div className="lg:w-3/12 w-full px-2">
+      <div className="lg:w-3/12 md:3/12 sm:w-1/2 w-full px-2">
         <motion.img
           ref={ref}
           onMouseMove={handleGesture}
