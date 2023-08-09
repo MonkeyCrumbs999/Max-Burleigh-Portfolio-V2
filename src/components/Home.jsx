@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom";
 
 import withPageTransitions from "./withPageTransitions";
 
@@ -25,7 +25,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-faedcd flex flex-col justify-start lg:mt-24 md:mt-16 sm:mt-10 mt-6 items-center">
+    <div className="bg-faedcd flex flex-col justify-start lg:mt-12 sm:mt-10 mt-6 items-center">
       <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-4xl font-black mt-6 mb-6 text-e9edc9">
         <AnimatePresence>
           {textArray.map((char, index) => (
@@ -40,8 +40,13 @@ const Home = () => {
           ))}
         </AnimatePresence>
       </h1>
-      <p className="lg:w-1/2 md:w-2/3 sm:w-3/4 w-full text-center mb-8 text-fefae0 px-4 sm:px-2">
-        This is my home page. This website is under construction. Be done soon.
+      <p className="lg:w-1/3 md:w-2/3 sm:w-3/4 w-full text-center mb-6 text-fefae0 px-4 sm:px-2">
+        Welcome to my official portfolio website! I am a full-stack web
+        developer based in Oregon.{" "}
+        <p className="mt-6">
+          Please see my work, checkout the GitHub and LinkedIn at the top and
+          have a splendid day :)
+        </p>
       </p>
       <div className="flex flex-col mb-8 text-center text-fefae0">
         <p className="mb-2">Here is my tech stack:</p>
