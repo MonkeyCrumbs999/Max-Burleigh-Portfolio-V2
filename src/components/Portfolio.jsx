@@ -61,7 +61,7 @@ const Portfolio = () => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2 px-2 mx-24 mt-6 font-medium text-gray-600 bg-nonPhotoBlue rounded hover:bg-ceruleanCrayola hover:text-white mb-2 block"
+              className="py-1 px-1 md:py-2 md:px-2 mx-4 md:mx-24 mt-4 md:mt-6 font-medium text-gray-600 bg-nonPhotoBlue rounded hover:bg-ceruleanCrayola hover:text-white mb-2 block text-center"
               whileHover={{
                 scale: 1.1,
                 transition: { type: "spring", stiffness: 400, damping: 10 },
@@ -69,6 +69,7 @@ const Portfolio = () => {
               whileTap={{ scale: 0.9 }}>
               Netlify Link
             </motion.a>
+
             <ul className="list-square list-outside pl-5 text-gray-700 mt-6 text-base">
               {project.description.map((item, idx) => (
                 <li key={idx}>{item}</li>
