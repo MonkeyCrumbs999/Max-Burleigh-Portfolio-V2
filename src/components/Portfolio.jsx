@@ -43,7 +43,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center m-12 gap-4 text-center">
+    <div className="flex flex-col items-center m-8 gap-4 text-center">
       <h1 className="text-4xl font-bold mb-8">Portfolio</h1>
       {projects.map((project, index) => (
         <div

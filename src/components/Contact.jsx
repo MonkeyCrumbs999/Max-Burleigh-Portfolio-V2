@@ -32,7 +32,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex justify-center items-start min-h-screen m-12 sm:px-0">
+    <div className="flex justify-center items-start min-h-screen m-8 sm:px-0">
       <div className="w-full max-w-md mx-auto">
         <h1 className="text-4xl font-semibold text-gray-900 mb-6 text-center sm:text-3xl">
           Contact
