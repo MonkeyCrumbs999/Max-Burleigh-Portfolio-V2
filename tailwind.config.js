@@ -5,6 +5,9 @@ export default {
     fontFamily: {
       sans: ["Poppins", "sans-serif"],
     },
+    listStyleType: {
+      square: "square",
+    },
     extend: {
       colors: {
         redPantone: "#E63946",
