@@ -61,16 +61,16 @@ const Header = () => {
               whileTap={{ scale: 0.9 }}>
               <LinkedInIcon className="w-6 h-6 text-ceruleanCrayola" />
             </motion.a>
-            {pathname !== "/" && (
-              <motion.span
-                className="text-2xl text-ceruleanCrayola mr-[1.5rem] lg:mr-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}>
-                max burleigh
-              </motion.span>
-            )}
           </div>
+          {pathname !== "/" && (
+            <motion.div
+              className="text-2xl text-ceruleanCrayola self-center grow-0 lg:grow lg:ml-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}>
+              max burleigh
+            </motion.div>
+          )}
           <div className="hidden md:flex items-center space-x-3">
             {navItems.map((item) => (
               <NavigationItem key={item.name} href={item.path}>

@@ -70,7 +70,7 @@ const Portfolio = () => {
               Netlify Link
             </motion.a>
 
-            <ul className="list-square list-outside pl-5 text-gray-700 mt-6 text-base">
+            <ul className="list-square list-outside pl-5 mt-6 text-base">
               {project.description.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}

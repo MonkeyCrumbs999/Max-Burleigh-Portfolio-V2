@@ -43,10 +43,6 @@ const Home = () => {
       <p className="lg:w-1/3 md:w-2/3 sm:w-3/4 w-full text-center mb-6 text-fefae0 px-4 sm:px-2">
         Welcome to my official portfolio website! I am a full-stack web
         developer based in Oregon.{" "}
-        <p className="mt-6">
-          Please see my work, checkout the GitHub and LinkedIn at the top and
-          have a splendid day :)
-        </p>
       </p>
       <div className="flex flex-col mb-8 text-center text-fefae0">
         <p className="mb-2">Here is my tech stack:</p>
@@ -72,7 +68,7 @@ const Home = () => {
         }}>
         <Link
           to="/portfolio"
-          className="py-2 px-4 bg-nonPhotoBlue text-#213547 font-semibold rounded-lg shadow-md hover:bg-ceruleanCrayola hover:text-white"
+          className="py-2 px-4 bg-nonPhotoBlue text-#213547 font-semibold rounded-lg shadow-md hover:bg-ceruleanCrayola hover:text-white dark:text-gray-500"
           whileHover={{
             scale: 1.1,
             transition: { type: "spring", stiffness: 400, damping: 10 },

@@ -34,7 +34,7 @@ const Contact = () => {
   return (
     <div className="flex justify-center items-start min-h-screen m-8 sm:px-0">
       <div className="w-full max-w-md mx-auto">
-        <h1 className="text-4xl font-semibold text-gray-900 mb-6 text-center sm:text-3xl">
+        <h1 className="text-4xl font-semibold mb-6 text-center sm:text-3xl">
           Contact
         </h1>
         {emailStatus === "success" && (
@@ -57,10 +57,11 @@ const Contact = () => {
               Name
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               id="name"
               name="name"
+              required={true}
             />
           </div>
           <div>
@@ -70,10 +71,11 @@ const Contact = () => {
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
               type="email"
               id="email"
               name="email"
+              required={true}
             />
           </div>
           <div>
@@ -83,10 +85,11 @@ const Contact = () => {
               Message
             </label>
             <textarea
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               id="message"
               name="message"
               rows="5"
+              required={true}
             />
           </div>
           <div className="w-[70%] m-auto">
