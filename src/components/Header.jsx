@@ -68,10 +68,12 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}>
-              max burleigh
+              <motion.a href="/" className="transition hover:text-berkeleyBlue">
+                max burleigh
+              </motion.a>
             </motion.div>
           )}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-3 ">
             {navItems.map((item) => (
               <NavigationItem key={item.name} href={item.path}>
                 {item.name}
@@ -95,7 +97,7 @@ const Header = () => {
         </div>
         <AnimatePresence>
           <motion.div
-            className="md:hidden"
+            className={`md:hidden ${!isOpen ? "pointer-events-none" : ""}`}
             initial="closed"
             animate={isOpen ? "open" : "closed"}
             variants={{
@@ -109,8 +111,7 @@ const Header = () => {
                 height: 0,
                 transition: { duration: 0.5, type: "tween" },
               },
-            }}
-            debugRender={true}>
+            }}>
             {navItems.map((item, index) => (
               <NavigationItem
                 key={item.name}

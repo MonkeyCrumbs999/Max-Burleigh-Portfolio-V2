@@ -40,7 +40,7 @@ const About = () => {
   return (
     <div className="flex flex-col m-8 justify-center items-center gap-8 lg:px-4 px-2">
       <h1 className="text-4xl lg:text-4xl">More About Me</h1>
-      <p className="lg:w-1/3 w-full lg:text-xl">
+      <p className="lg:w-1/3 md:w-1/2 w-full lg:text-xl">
         Hello! My name is Max Burleigh, I'm 29 years old. Since I was a child
         I've been OBSESSED with technology. I love being at the forefront of the
         latest and greatest. I have been spent all of my working career within
