@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import GitHubIcon from "./GitHubIcon";
 import LinkedInIcon from "./LinkedInIcon";
 import useWindowDimensions from "./useWindowDimensions";
@@ -68,9 +68,11 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}>
-              <motion.a href="/" className="transition hover:text-berkeleyBlue">
-                max burleigh
-              </motion.a>
+              <motion.div>
+                <Link to="/" className="transition hover:text-berkeleyBlue">
+                  max burleigh
+                </Link>
+              </motion.div>
             </motion.div>
           )}
           <div className="hidden md:flex items-center space-x-3 ">
