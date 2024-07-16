@@ -6,7 +6,14 @@ import {
   faReact,
   faNodeJs,
 } from "@fortawesome/free-brands-svg-icons";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDatabase,
+  faFire,
+  faCamera,
+  faRobot,
+  faBullhorn,
+  faTasksAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -22,6 +29,15 @@ const Home = () => {
     { icon: faReact, label: "React" },
     { icon: faNodeJs, label: "Node.js" },
     { icon: faDatabase, label: "MongoDB" },
+    { icon: faFire, label: "Firebase" },
+    { icon: faReact, label: "NextJS" },
+  ];
+
+  const additionalSkills = [
+    { icon: faCamera, label: "Photoshop" },
+    { icon: faRobot, label: "AI Tools" },
+    { icon: faBullhorn, label: "Marketing & Advertising" },
+    { icon: faTasksAlt, label: "Project Management" },
   ];
 
   return (
@@ -43,14 +59,15 @@ const Home = () => {
       </h1>
       <p className="lg:w-1/3 md:w-2/3 sm:w-3/4 w-full text-center mb-6 text-fefae0 px-4 sm:px-2">
         Welcome to my official portfolio website! I am a full-stack web
-        developer based in Oregon.{" "}
+        developer, project manager, and overall lover of 'getting things done'
+        based in Oregon!{" "}
       </p>
       <div className="flex flex-col mb-8 text-center text-fefae0">
         <p className="mb-2">Here is my tech stack:</p>
         <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
           {techs.map((tech, index) => (
             <div
-              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/3 sm:w-1/3 w-1/3 px-1 lg:px-2"
+              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/4 sm:w-1/4 w-1/4 px-1 lg:px-2"
               key={index}
             >
               <FontAwesomeIcon icon={tech.icon} size="3x" />
@@ -83,6 +100,21 @@ const Home = () => {
           See my work
         </Link>
       </motion.div>
+
+      <div className="flex flex-col mt-12 mb-8 text-center text-fefae0">
+        <p className="mb-4 text-lg font-semibold">Additional Skills:</p>
+        <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
+          {additionalSkills.map((skill, index) => (
+            <div
+              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/4 sm:w-1/4 w-1/4 px-1 lg:px-2"
+              key={index}
+            >
+              <FontAwesomeIcon icon={skill.icon} size="2x" />
+              <p>{skill.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
