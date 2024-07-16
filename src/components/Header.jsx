@@ -5,6 +5,7 @@ import GitHubIcon from "./GitHubIcon";
 import LinkedInIcon from "./LinkedInIcon";
 import useWindowDimensions from "./useWindowDimensions";
 import NavigationItem from "./NavigationItem";
+import Resume from "./Resume";
 
 const Header = () => {
   const { width } = useWindowDimensions();
@@ -16,6 +17,7 @@ const Header = () => {
     { name: "Portfolio", path: "/portfolio" },
     { name: "More About Me", path: "/about" },
     { name: "Contact", path: "/contact" },
+    { name: "Resume", path: "/resume" },
   ];
 
   const toggle = () => {

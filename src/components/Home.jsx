@@ -25,7 +25,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-faedcd flex flex-col justify-start lg:mt-12 sm:mt-10 mt-6 items-center">
+    <div className="bg-faedcd flex flex-col justify-start lg:mt-12 sm:mt-10 mt-6 items-center dark:text-white">
       <h1 className="lg:text-9xl md:text-7xl sm:text-5xl text-4xl font-black mt-6 mb-6 text-e9edc9">
         <AnimatePresence>
           {textArray.map((char, index) => (
@@ -34,7 +34,8 @@ const Home = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
-              transition={{ delay: 0.6 + index * 0.1 }}>
+              transition={{ delay: 0.6 + index * 0.1 }}
+            >
               {char}
             </motion.span>
           ))}
@@ -50,7 +51,8 @@ const Home = () => {
           {techs.map((tech, index) => (
             <div
               className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/3 sm:w-1/3 w-1/3 px-1 lg:px-2"
-              key={index}>
+              key={index}
+            >
               <FontAwesomeIcon icon={tech.icon} size="3x" />
               <p>{tech.label}</p>
             </div>
@@ -65,7 +67,8 @@ const Home = () => {
         }}
         whileTap={{
           scale: 0.9,
-        }}>
+        }}
+      >
         <Link
           to="/portfolio"
           className="py-2 px-4 bg-nonPhotoBlue text-#213547 font-semibold rounded-lg shadow-md hover:bg-ceruleanCrayola hover:text-white dark:text-gray-500"
@@ -75,7 +78,8 @@ const Home = () => {
           }}
           whileTap={{
             scale: 0.9,
-          }}>
+          }}
+        >
           See my work
         </Link>
       </motion.div>
