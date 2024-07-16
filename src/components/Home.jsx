@@ -102,7 +102,7 @@ const Home = () => {
       </motion.div>
 
       <div className="flex flex-col mt-12 mb-8 text-center text-fefae0">
-        <p className="mb-4 text-lg font-semibold">Additional Skills:</p>
+        <p className="mb-2">Additional Skills:</p>
         <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
           {additionalSkills.map((skill, index) => (
             <div
