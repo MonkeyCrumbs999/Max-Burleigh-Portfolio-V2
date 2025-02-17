@@ -106,10 +106,10 @@ const Home = () => {
 
       <div className="flex flex-col mt-12 mb-8 text-center text-fefae0">
         <p className="mb-2">Additional Skills:</p>
-        <div className="grid grid-cols-4 gap-2 justify-items-center mt-4 px-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:flex lg:justify-evenly lg:items-center mt-4 px-2 lg:px-8 max-w-6xl w-full">
           {additionalSkills.map((skill, index) => (
             <div
-              className="flex flex-col items-center space-y-2 mb-4"
+              className="flex flex-col items-center space-y-2 mb-4 lg:mx-4"
               key={index}
             >
               <FontAwesomeIcon
