@@ -64,14 +64,17 @@ const Home = () => {
       </p>
       <div className="flex flex-col mb-8 text-center text-fefae0">
         <p className="mb-2">Here is my tech stack:</p>
-        <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
+        <div className="grid grid-cols-4 gap-2 justify-items-center mt-4 px-2">
           {techs.map((tech, index) => (
             <div
-              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/4 sm:w-1/4 w-1/4 px-1 lg:px-2"
+              className="flex flex-col items-center space-y-2 mb-4"
               key={index}
             >
-              <FontAwesomeIcon icon={tech.icon} size="3x" />
-              <p>{tech.label}</p>
+              <FontAwesomeIcon
+                icon={tech.icon}
+                className="w-8 h-8 lg:w-12 lg:h-12"
+              />
+              <p className="text-xs lg:text-base">{tech.label}</p>
             </div>
           ))}
         </div>
@@ -103,14 +106,17 @@ const Home = () => {
 
       <div className="flex flex-col mt-12 mb-8 text-center text-fefae0">
         <p className="mb-2">Additional Skills:</p>
-        <div className="flex flex-wrap justify-center lg:space-x-4 md:space-x-2 sm:space-x-1 space-x-0 mt-4">
+        <div className="grid grid-cols-4 gap-2 justify-items-center mt-4 px-2">
           {additionalSkills.map((skill, index) => (
             <div
-              className="flex flex-col items-center space-y-2 mb-4 lg:w-auto md:w-1/4 sm:w-1/4 w-1/4 px-1 lg:px-2"
+              className="flex flex-col items-center space-y-2 mb-4"
               key={index}
             >
-              <FontAwesomeIcon icon={skill.icon} size="2x" />
-              <p>{skill.label}</p>
+              <FontAwesomeIcon
+                icon={skill.icon}
+                className="w-8 h-8 lg:w-10 lg:h-10"
+              />
+              <p className="text-xs lg:text-base text-center">{skill.label}</p>
             </div>
           ))}
         </div>
