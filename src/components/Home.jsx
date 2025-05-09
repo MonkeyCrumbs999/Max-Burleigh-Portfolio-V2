@@ -5,6 +5,8 @@ import {
   faJsSquare,
   faReact,
   faNodeJs,
+  faGoogle,
+  faMicrosoft,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faDatabase,
@@ -13,32 +15,77 @@ import {
   faRobot,
   faBullhorn,
   faTasksAlt,
+  faEnvelope,
+  faShoppingBag,
 } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import withPageTransitions from "./withPageTransitions";
+import OpenAIBlack from "../assets/ai-icons/OpenAI-black/OpenAI_Symbol_0.svg";
+import OpenAIWhite from "../assets/ai-icons/OpenAI-white/OpenAI_Symbol_0.svg";
+import AnthropicBlack from "../assets/ai-icons/Anthropic-black/Anthropic_Logo_0.svg";
+import AnthropicWhite from "../assets/ai-icons/Anthropic-white/Anthropic_Logo_0.svg";
 
 const Home = () => {
   const text = "Max Burleigh";
   const textArray = text.split("");
+  // Separate OpenAI and Anthropic from the rest of the tech stack
+  const featuredTechs = [
+    {
+      label: "OpenAI",
+      type: "img",
+      lightSrc: OpenAIBlack,
+      darkSrc: OpenAIWhite,
+      large: true,
+    },
+    {
+      label: "Anthropic",
+      type: "img",
+      lightSrc: AnthropicBlack,
+      darkSrc: AnthropicWhite,
+      large: true,
+    },
+  ];
   const techs = [
-    { icon: faHtml5, label: "HTML" },
-    { icon: faCss3Alt, label: "CSS" },
-    { icon: faJsSquare, label: "JavaScript" },
-    { icon: faReact, label: "React" },
-    { icon: faNodeJs, label: "Node.js" },
-    { icon: faDatabase, label: "MongoDB" },
-    { icon: faFire, label: "Firebase" },
-    { icon: faReact, label: "NextJS" },
+    { icon: faHtml5, label: "HTML", type: "fa" },
+    { icon: faCss3Alt, label: "CSS", type: "fa" },
+    { icon: faJsSquare, label: "JavaScript", type: "fa" },
+    { icon: faReact, label: "React", type: "fa" },
+    { icon: faNodeJs, label: "Node.js", type: "fa" },
+    { icon: faDatabase, label: "MongoDB", type: "fa" },
+    { icon: faFire, label: "Firebase", type: "fa" },
+    { icon: faReact, label: "NextJS", type: "fa" },
   ];
 
   const additionalSkills = [
-    { icon: faCamera, label: "Photoshop" },
-    { icon: faRobot, label: "AI Tools" },
-    { icon: faBullhorn, label: "Marketing & Advertising" },
-    { icon: faTasksAlt, label: "Project Management" },
+    { icon: faCamera, label: "Photoshop", type: "fa" },
+    { icon: faRobot, label: "AI Tools", type: "fa" },
+    { icon: faBullhorn, label: "Marketing & Advertising", type: "fa" },
+    { icon: faGoogle, label: "Google (Ads)", type: "fa" },
+    { icon: faMicrosoft, label: "Microsoft (Ads)", type: "fa" },
+    { icon: faEnvelope, label: "Email Marketing", type: "fa" },
+    { icon: faShoppingBag, label: "Shopify", type: "fa" },
+    { icon: faTasksAlt, label: "Project Management", type: "fa" },
   ];
+
+  // SkillIcon component for theme-based icon switching
+  const SkillIcon = ({ lightSrc, darkSrc, alt, className }) => {
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+      const match = window.matchMedia("(prefers-color-scheme: dark)");
+      setIsDark(match.matches);
+      const handler = (e) => setIsDark(e.matches);
+      match.addEventListener("change", handler);
+      return () => match.removeEventListener("change", handler);
+    }, []);
+
+    return (
+      <img src={isDark ? darkSrc : lightSrc} alt={alt} className={className} />
+    );
+  };
 
   return (
     <div className="bg-faedcd flex flex-col justify-start lg:mt-12 sm:mt-10 mt-6 items-center dark:text-white">
@@ -64,6 +111,27 @@ const Home = () => {
       </p>
       <div className="flex flex-col mb-8 text-center text-fefae0">
         <p className="mb-2">Here is my tech stack:</p>
+        {/* Featured row for OpenAI and Anthropic */}
+        <div className="flex justify-center items-end gap-16 my-4">
+          {featuredTechs.map((tech, index) => (
+            <div className="flex flex-col items-center space-y-2" key={index}>
+              <SkillIcon
+                lightSrc={tech.lightSrc}
+                darkSrc={tech.darkSrc}
+                alt={tech.label}
+                className={
+                  tech.label === "Anthropic"
+                    ? "w-20 h-20 lg:w-28 lg:h-28"
+                    : "w-16 h-16 lg:w-24 lg:h-24"
+                }
+              />
+              <p className="text-base lg:text-xl font-bold text-center">
+                {tech.label}
+              </p>
+            </div>
+          ))}
+        </div>
+        {/* Grid for the rest of the tech stack */}
         <div className="grid grid-cols-4 gap-2 justify-items-center mt-4 px-2">
           {techs.map((tech, index) => (
             <div
