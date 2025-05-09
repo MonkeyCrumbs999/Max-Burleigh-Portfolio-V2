@@ -8,6 +8,8 @@ import vinscribeImage from "../assets/vinscribe-port-5.png"; // Add the new imag
 import carlyImage from "../assets/carly-port-6.png"; // Add the new image import
 import shopDowntownLogo from "../assets/shop-downtown-logo-transparent.png";
 import fullLeafLogo from "../assets/Logo_Website.png";
+import fullLeafWholesaleLogo from "../assets/Full-Leaf-Logo-wholesale2.webp";
+import vinscribeLogo2 from "../assets/vinscribe-logo (2).webp";
 import { motion } from "framer-motion";
 
 const Portfolio = () => {
@@ -34,6 +36,27 @@ const Portfolio = () => {
       longDescription: `Full Leaf Tea Company is a leading online retailer of organic loose leaf teas, matcha, and wellness blends. Built on Shopify, the site features a robust e-commerce experience, wellness resources, and a customer-focused approach. Integrations with OpenAI, Anthropic, and custom APIs enhance the shopping and support experience. The brand is dedicated to quality, wellness, and exceptional customer service, offering a wide range of teas and accessories to promote a healthy lifestyle.`,
     },
     {
+      mainTitle: "Full Leaf Tea Company Wholesale",
+      subTitle: "Wholesale Portal for Tea Retailers & Partners",
+      description: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Liquid",
+        "OpenAI",
+        "Anthropic",
+        "APIs",
+        "Klaviyo",
+        "Google Ads",
+        "Microsoft Ads",
+        "Facebook Ads",
+        "Amazon Seller Central",
+      ],
+      image: fullLeafWholesaleLogo,
+      link: "https://wholesale.fullleafteacompany.com",
+      longDescription: `Full Leaf Tea Company Wholesale is the dedicated B2B portal for tea retailers, cafes, and partners. Built on Shopify, it offers a seamless wholesale ordering experience, exclusive pricing, and resources for business customers. The site leverages the same advanced integrations as the main store, including OpenAI, Anthropic, and custom APIs, to provide top-tier support and automation for wholesale clients.`,
+    },
+    {
       mainTitle: "VINSCRIBE",
       subTitle: "Full-Stack SaaS Website",
       description: [
@@ -47,7 +70,7 @@ const Portfolio = () => {
         "APIs",
         "OpenAI API",
       ],
-      image: vinscribeImage,
+      image: vinscribeLogo2,
       link: "https://www.vinscribe.com", // Replace with the actual link
     },
     {
@@ -105,13 +128,6 @@ const Portfolio = () => {
       image: maxBImage,
       link: "https://dancing-eclair-388e8c.netlify.app/",
     },
-    {
-      mainTitle: "Rebound",
-      subTitle: "Front-End Website",
-      description: ["HTML", "CSS", "JavaScript", "Shopify", "APIs"],
-      image: reboundImage,
-      link: null, // No link for Rebound
-    },
   ];
 
   return (
@@ -124,14 +140,21 @@ const Portfolio = () => {
         >
           <img
             className={
-              project.mainTitle === "Shop Downtown" ||
-              project.mainTitle === "Full Leaf Tea Company"
-                ? "w-1/2 mx-auto my-4"
+              project.mainTitle === "Full Leaf Tea Company Wholesale"
+                ? "w-1/2 mx-auto my-4 bg-white p-4 rounded-lg"
+                : project.mainTitle === "VINSCRIBE"
+                ? "w-1/2 mx-auto my-4 bg-white p-4 rounded-lg"
+                : project.mainTitle === "Shop Downtown"
+                ? "w-1/2 mx-auto my-4 bg-white p-4 rounded-lg"
+                : project.mainTitle === "Full Leaf Tea Company"
+                ? "w-1/2 mx-auto my-4 bg-white p-4 rounded-lg"
                 : "w-full"
             }
             style={
               project.mainTitle === "Shop Downtown" ||
-              project.mainTitle === "Full Leaf Tea Company"
+              project.mainTitle === "Full Leaf Tea Company" ||
+              project.mainTitle === "Full Leaf Tea Company Wholesale" ||
+              project.mainTitle === "VINSCRIBE"
                 ? { maxWidth: "180px", height: "auto" }
                 : {}
             }
