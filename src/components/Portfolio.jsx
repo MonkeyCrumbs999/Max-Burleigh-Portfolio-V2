@@ -8,7 +8,7 @@ import vinscribeImage from "../assets/vinscribe-port-5.png"; // Add the new imag
 import carlyImage from "../assets/carly-port-6.png"; // Add the new image import
 import shopDowntownLogo from "../assets/shop-downtown-logo-transparent.png";
 import fullLeafLogo from "../assets/Logo_Website.png";
-import fullLeafWholesaleLogo from "../assets/Full-Leaf-Logo-wholesale2.webp";
+import fullLeafWholesaleLogo from "../assets/full-leaf-wholesale.webp";
 import vinscribeLogo2 from "../assets/vinscribe-logo (2).webp";
 import { motion } from "framer-motion";
 
