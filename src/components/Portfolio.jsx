@@ -9,7 +9,7 @@ import carlyImage from "../assets/carly-port-6.png"; // Add the new image import
 import shopDowntownLogo from "../assets/shop-downtown-logo-transparent.png";
 import fullLeafLogo from "../assets/Logo_Website.png";
 import fullLeafWholesaleLogo from "../assets/full-leaf-wholesale.webp";
-import vinscribeLogo2 from "../assets/vinscribe-logo.webp";
+import vinscribeLogo2 from "../assets/Vinscribe Logo.webp";
 import { motion } from "framer-motion";
 
 const Portfolio = () => {
